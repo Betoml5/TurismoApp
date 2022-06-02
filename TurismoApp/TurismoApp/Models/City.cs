@@ -12,7 +12,7 @@ namespace TurismoApp.Models
 
         public string Type { get; set; }
 
-        public string Image { get; set; }
+        public string Image { get; set; } = "";
 
         public double AvgPrice { get; set; }
     }

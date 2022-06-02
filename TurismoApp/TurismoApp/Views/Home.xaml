@@ -1,200 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:TurismoApp.ViewModels" x:DataType="viewmodels:CityViewModel"
              x:Class="TurismoApp.Views.Home" >
-    
-   
+    <ContentPage.BindingContext>
+        <viewmodels:CityViewModel x:Name="cityvm" ></viewmodels:CityViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  Command="{Binding ChangeViewCommand}" CommandParameter="create" IconImageSource="https://img.icons8.com/office/344/worldwide-location--v1.png"></ToolbarItem>
+    </ContentPage.ToolbarItems>
 
-    <ScrollView >
-
-
-        
-        <FlexLayout VerticalOptions="Start" Direction="Row" Wrap="Wrap"  >
+    <ScrollView BackgroundColor="#DBE2EF">
+        <FlexLayout VerticalOptions="Start" Direction="Row" Wrap="Wrap" BindableLayout.ItemsSource="{Binding Cities}">
             <FlexLayout.Resources>
                 <Style TargetType="Label">
                     <Setter Property="TextColor" Value="#000"></Setter>
                 </Style>
-               
+
             </FlexLayout.Resources>
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={x:Reference cityvm},
+                                Path=DetailsCityCommand}"
+                                CommandParameter="{Binding .}"
+                                >
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout Margin="12">
+                            <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
+                                <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="{Binding Image}"></Image>
 
-                <Entry  FlexLayout.Basis="100%" HeightRequest="40" Margin="10" Placeholder="Buscar destino..."  BackgroundColor="Transparent" PlaceholderColor="#fff" ></Entry>
+                            </Frame>
+                            <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
+                                <FlexLayout JustifyContent="SpaceBetween" >
+                                    <StackLayout >
+                                        <Label FontAttributes="Bold" Text="{Binding Name}"></Label>
+                                        <Label Text="{Binding Type}"></Label>
+                                    </StackLayout>
 
-            
-            <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
-                <StackLayout Margin="12">
-                    <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
-                        <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="https://www.fodors.com/wp-content/uploads/2022/04/Hero-Not2DoCancun-shutterstock_1063645616.jpg"></Image>
+                                    <!--Aqui va un trigger-->
+                                    <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
 
+                                    </ImageButton>
+                                </FlexLayout>
+                            </Frame>
+                        </StackLayout>
                     </Frame>
-                    <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                        <FlexLayout JustifyContent="SpaceBetween" >
-                            <StackLayout >
-                                <Label FontAttributes="Bold" >Cancun</Label>
-                                <Label>Playa</Label>
-                            </StackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
 
-                            <!--Aqui va un trigger-->
-                            <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
-                                
-                            </ImageButton>
-                        </FlexLayout>
-                    </Frame>
-                </StackLayout>
-            </Frame>
-
-            <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
-                <StackLayout Margin="12">
-                    <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
-                        <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="https://www.fodors.com/wp-content/uploads/2022/04/Hero-Not2DoCancun-shutterstock_1063645616.jpg"></Image>
-
-                    </Frame>
-                    <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                        <FlexLayout JustifyContent="SpaceBetween" >
-                            <StackLayout >
-                                <Label FontAttributes="Bold">Cancun</Label>
-                                <Label>Playa</Label>
-                            </StackLayout>
-
-                            <!--Aqui va un trigger-->
-                            <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
-
-                            </ImageButton>
-                        </FlexLayout>
-                    </Frame>
-                </StackLayout>
-            </Frame>
-
-            <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
-                <StackLayout Margin="12">
-                    <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
-                        <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="https://www.fodors.com/wp-content/uploads/2022/04/Hero-Not2DoCancun-shutterstock_1063645616.jpg"></Image>
-
-                    </Frame>
-                    <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                        <FlexLayout JustifyContent="SpaceBetween" >
-                            <StackLayout >
-                                <Label FontAttributes="Bold" >Cancun</Label>
-                                <Label>Playa</Label>
-                            </StackLayout>
-
-                            <!--Aqui va un trigger-->
-                            <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
-
-                            </ImageButton>
-                        </FlexLayout>
-                    </Frame>
-                </StackLayout>
-            </Frame>
-
-            <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
-                <StackLayout Margin="12">
-                    <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
-                        <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="https://www.fodors.com/wp-content/uploads/2022/04/Hero-Not2DoCancun-shutterstock_1063645616.jpg"></Image>
-
-                    </Frame>
-                    <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                        <FlexLayout JustifyContent="SpaceBetween" >
-                            <StackLayout >
-                                <Label FontAttributes="Bold">Cancun</Label>
-                                <Label>Playa</Label>
-                            </StackLayout>
-
-                            <!--Aqui va un trigger-->
-                            <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
-
-                            </ImageButton>
-                        </FlexLayout>
-                    </Frame>
-                </StackLayout>
-            </Frame>
-
-            <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
-                <StackLayout Margin="12">
-                    <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
-                        <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="https://www.fodors.com/wp-content/uploads/2022/04/Hero-Not2DoCancun-shutterstock_1063645616.jpg"></Image>
-
-                    </Frame>
-                    <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                        <FlexLayout JustifyContent="SpaceBetween" >
-                            <StackLayout >
-                                <Label FontAttributes="Bold" >Cancun</Label>
-                                <Label>Playa</Label>
-                            </StackLayout>
-
-                            <!--Aqui va un trigger-->
-                            <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
-
-                            </ImageButton>
-                        </FlexLayout>
-                    </Frame>
-                </StackLayout>
-            </Frame>
-
-            <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
-                <StackLayout Margin="12">
-                    <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
-                        <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="https://www.fodors.com/wp-content/uploads/2022/04/Hero-Not2DoCancun-shutterstock_1063645616.jpg"></Image>
-
-                    </Frame>
-                    <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                        <FlexLayout JustifyContent="SpaceBetween" >
-                            <StackLayout >
-                                <Label FontAttributes="Bold">Cancun</Label>
-                                <Label>Playa</Label>
-                            </StackLayout>
-
-                            <!--Aqui va un trigger-->
-                            <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
-
-                            </ImageButton>
-                        </FlexLayout>
-                    </Frame>
-                </StackLayout>
-            </Frame>
-
-            <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
-                <StackLayout Margin="12">
-                    <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
-                        <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="https://www.fodors.com/wp-content/uploads/2022/04/Hero-Not2DoCancun-shutterstock_1063645616.jpg"></Image>
-
-                    </Frame>
-                    <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                        <FlexLayout JustifyContent="SpaceBetween" >
-                            <StackLayout >
-                                <Label FontAttributes="Bold" >Cancun</Label>
-                                <Label>Playa</Label>
-                            </StackLayout>
-
-                            <!--Aqui va un trigger-->
-                            <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
-
-                            </ImageButton>
-                        </FlexLayout>
-                    </Frame>
-                </StackLayout>
-            </Frame>
-
-            <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
-                <StackLayout Margin="12">
-                    <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
-                        <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="https://www.fodors.com/wp-content/uploads/2022/04/Hero-Not2DoCancun-shutterstock_1063645616.jpg"></Image>
-
-                    </Frame>
-                    <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                        <FlexLayout JustifyContent="SpaceBetween" >
-                            <StackLayout >
-                                <Label FontAttributes="Bold">Cancun</Label>
-                                <Label>Playa</Label>
-                            </StackLayout>
-
-                            <!--Aqui va un trigger-->
-                            <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
-
-                            </ImageButton>
-                        </FlexLayout>
-                    </Frame>
-                </StackLayout>
-            </Frame>
 
 
         </FlexLayout>

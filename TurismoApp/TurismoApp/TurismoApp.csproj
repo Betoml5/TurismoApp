@@ -22,16 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Assets\fav-empty.png" />
     <Resource Include="Assets\fav-full.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Create.xaml">
+    <EmbeddedResource Update="Views\CreateCityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DetailsCityPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Home.xaml">

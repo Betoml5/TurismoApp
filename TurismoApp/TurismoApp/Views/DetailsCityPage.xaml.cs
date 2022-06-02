@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace TurismoApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Create : ContentPage
+    public partial class DetailsCityPage : ContentPage
     {
-        public Create()
+        public DetailsCityPage()
         {
             InitializeComponent();
         }
