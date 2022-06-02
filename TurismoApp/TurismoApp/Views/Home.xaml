@@ -9,7 +9,7 @@
         <ToolbarItem  Command="{Binding ChangeViewCommand}" CommandParameter="create" IconImageSource="https://img.icons8.com/office/344/worldwide-location--v1.png"></ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ScrollView BackgroundColor="#DBE2EF">
+    <ScrollView BackgroundColor="#5B7DB1">
         <FlexLayout VerticalOptions="Start" Direction="Row" Wrap="Wrap" BindableLayout.ItemsSource="{Binding Cities}">
             <FlexLayout.Resources>
                 <Style TargetType="Label">
@@ -34,7 +34,7 @@
 
                             </Frame>
                             <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
-                                <FlexLayout JustifyContent="SpaceBetween" >
+                                <FlexLayout JustifyContent="SpaceBetween"  AlignItems="Center" >
                                     <StackLayout >
                                         <Label FontAttributes="Bold" Text="{Binding Name}"></Label>
                                         <Label Text="{Binding Type}"></Label>
