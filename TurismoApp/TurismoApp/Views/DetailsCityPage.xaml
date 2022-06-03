@@ -3,7 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TurismoApp.Views.DetailsCityPage">
     <StackLayout>
-        <Label>Hola</Label>
-        <Label  Text="{Binding City.Name}" TextColor="Red"></Label>
+
+      
+    
+        <Frame Padding="0" Margin="14" CornerRadius="10" >
+            <Image Source="{Binding Image}" Aspect="Fill" HeightRequest="250"/>
+        </Frame>
+        <StackLayout Margin="14">
+           
+            <Frame CornerRadius="12" >
+                <StackLayout >
+                    <Label FontAttributes="Bold" TextColor="#000" FontSize="20">Detalles</Label>
+                        <Label Text="{Binding Type}" FontAttributes="Bold" TextColor="#000"></Label>
+                    <FlexLayout JustifyContent="SpaceBetween">
+                        <Button Text="Eliminar" BackgroundColor="#3F72AF" TextColor="#fff" FlexLayout.Basis="48%"></Button>
+                        <Button Text="Editar" BackgroundColor="#3F72AF" TextColor="#fff" FlexLayout.Basis="48%" ></Button>
+
+
+                    </FlexLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

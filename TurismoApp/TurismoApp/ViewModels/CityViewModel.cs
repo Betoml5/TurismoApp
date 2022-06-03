@@ -28,6 +28,8 @@ namespace TurismoApp.ViewModels
 
         public ICommand DetailsCityCommand { get; set; }    
 
+        public ICommand DeleteCityCommand { get; set; }
+
         // Pages
         CreateCityPage createCityPage;
         DetailsCityPage detailsCityPage;
@@ -38,15 +40,16 @@ namespace TurismoApp.ViewModels
             ChangeViewCommand = new Command<string>(ChangeView);
             CreateCityCommand = new Command(CreateCity);
             DetailsCityCommand = new Command<City>(DetailsCity);
+            DeleteCityCommand = new Command<City>(DeleteCity);
         }
 
-
+     
 
         private void ChangeView(string view)
         {
             if (view == "create")
             {
-                City = new City(); //Aqui se guardaran los datos capturados al agregar
+                City = new City();
                 createCityPage = new CreateCityPage() { BindingContext = this };
                 Application.Current.MainPage.Navigation.PushAsync(createCityPage);
             } 
@@ -67,6 +70,8 @@ namespace TurismoApp.ViewModels
         }
 
 
+
+
         private void DetailsCity(City City)
         {
 
@@ -76,6 +81,15 @@ namespace TurismoApp.ViewModels
                 BindingContext = City
             };
             Application.Current.MainPage.Navigation.PushAsync(detailsCityPage);
+        }
+
+        private void DeleteCity(City City)
+        {
+            if (City != null)
+            {
+                Cities.Remove(City);
+                Save();
+            }
         }
 
 
@@ -103,20 +117,7 @@ namespace TurismoApp.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
-        {
-            if (!Equals(field, newValue))
-            {
-                field = newValue;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
+       
 
-            return false;
-        }
-
-        private ImageSource image;
-
-        public ImageSource Image { get => image; set => SetProperty(ref image, value); }
     }
 }
