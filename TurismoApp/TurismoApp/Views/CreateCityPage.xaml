@@ -2,9 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TurismoApp.Views.CreateCityPage">
-    <StackLayout BackgroundColor="#5B7DB1">
+    <StackLayout BackgroundColor="#1f252c">
         <Image Margin="0,30" Source="https://img.icons8.com/office/344/worldwide-location--v1.png"></Image>
         <StackLayout Margin="20">
+            <StackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor" Value="#fff"></Setter>
+                    <Setter Property="FontFamily" Value="PPN"></Setter>
+                </Style>
+                <Style TargetType="Entry">
+                    <Setter Property="PlaceholderColor" Value="#FFF"></Setter>
+                </Style>
+            </StackLayout.Resources>
             <Label>Nombre de la ciudad</Label>
             <Entry Placeholder="Cancun" Text="{Binding City.Name}"></Entry>
 
@@ -12,9 +21,9 @@
             <Entry Placeholder="Playa" Text="{Binding City.Type}"></Entry>
 
             <Label>Imagen</Label>
-            <Entry Placeholder="http:imagen.png" Text="{Binding City.Image}"></Entry>
+            <Entry Placeholder="http:imagen.png" Text="{Binding City.Image}" ></Entry>
 
-            <Button BackgroundColor="#3F72AF" TextColor="#fff" Text="Agregar" CornerRadius="4" Command="{Binding CreateCityCommand}"></Button>
+            <Button BackgroundColor="#17e78e" FontAttributes="Bold" TextColor="#000" Text="Agregar" CornerRadius="4" Command="{Binding CreateCityCommand}"></Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>

@@ -28,6 +28,15 @@
                         <Button Text="Agregar a favoritos" FontAttributes="Bold" BackgroundColor="#17e78e" CornerRadius="12" FlexLayout.Basis="80%"></Button>
                         <Label TextColor="#42a27d" FontAttributes="Bold" FontSize="20" FlexLayout.AlignSelf="Center" Text="{Binding AvgPrice, StringFormat='${0:F0}'}"></Label>
                     </FlexLayout>
+                    <FlexLayout Margin="14">
+                        <Label FontAttributes="Bold">Descripcion</Label>
+                        <Label Text="{Binding Description}"></Label>
+                    </FlexLayout>
+                    <FlexLayout Margin="14">
+                        <ImageButton Margin="0,0,10,0" CornerRadius="12" BackgroundColor="#E23E57" Source="https://img.icons8.com/material-outlined/344/filled-trash.png" WidthRequest="50" HeightRequest="50" Padding="10"></ImageButton>
+                        <ImageButton CornerRadius="12" BackgroundColor="#17e78e" Source="https://img.icons8.com/material-outlined/344/edit--v1.png" WidthRequest="50" HeightRequest="50" Padding="10"></ImageButton>
+
+                    </FlexLayout>
                 </StackLayout>
             </Frame>
         </StackLayout>
