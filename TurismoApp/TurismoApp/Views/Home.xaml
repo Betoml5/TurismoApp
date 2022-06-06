@@ -1,24 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:TurismoApp.ViewModels" 
-             x:Class="TurismoApp.Views.Home" >
+             x:Class="TurismoApp.Views.Home" 
+             BackgroundColor="#fff">
     <ContentPage.BindingContext>
         <viewmodels:CityViewModel x:Name="cityvm" ></viewmodels:CityViewModel>
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem  Command="{Binding ChangeViewCommand}" CommandParameter="create" IconImageSource="https://img.icons8.com/office/344/worldwide-location--v1.png"></ToolbarItem>
+        <ToolbarItem   Command="{Binding ChangeViewCommand}" CommandParameter="create" IconImageSource="https://i.postimg.cc/hGDBN76X/add-1.png"  ></ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ScrollView BackgroundColor="#5B7DB1">
-        <FlexLayout VerticalOptions="Start" Direction="Row" Wrap="Wrap" BindableLayout.ItemsSource="{Binding Cities}">
+    <ScrollView BackgroundColor="#1f252c">
+        <FlexLayout VerticalOptions="Start" AlignContent="Start" Direction="Row" Wrap="Wrap" BindableLayout.ItemsSource="{Binding Cities}">
             <FlexLayout.Resources>
                 <Style TargetType="Label">
-                    <Setter Property="TextColor" Value="#000"></Setter>
-                </Style>
+                    <Setter Property="TextColor" Value="#fff"></Setter>
+                    <Setter Property="FontFamily" Value="PPN"></Setter>
 
+                </Style>
             </FlexLayout.Resources>
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
+
                     <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
@@ -33,7 +36,7 @@
                                 <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="{Binding Image}"></Image>
 
                             </Frame>
-                            <Frame Margin="10,-50" Padding="10" CornerRadius="9"  >
+                            <Frame Margin="10,-50" Padding="10" CornerRadius="9" BackgroundColor="#505764" >
                                 <FlexLayout JustifyContent="SpaceBetween"  AlignItems="Center" >
                                     <StackLayout >
                                         <Label FontAttributes="Bold" Text="{Binding Name}"></Label>

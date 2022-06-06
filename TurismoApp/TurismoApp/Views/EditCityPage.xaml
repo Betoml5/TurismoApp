@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TurismoApp.Views.EditCityPage">
+    <StackLayout BackgroundColor="#82d9f3">
+        <Image Margin="0,30" Source="https://img.icons8.com/office/344/worldwide-location--v1.png"></Image>
+        <StackLayout Margin="20">
+
+            <StackLayout.Resources>
+                <Style TargetType="Entry">
+                    <Setter Property="TextColor" Value="#fff"></Setter>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor" Value="#fff"></Setter>
+                    <Setter Property="FontAttributes" Value="Bold"></Setter>
+                </Style>
+            </StackLayout.Resources>
+            <Label>Nombre de la ciudad</Label>
+            <Entry Text="{Binding City.Name}"></Entry>
+
+            <Label>Tipo</Label>
+            <Entry Placeholder="Playa" Text="{Binding City.Type}"></Entry>
+
+            <Label>Imagen</Label>
+            <Entry Placeholder="http:imagen.png" Text="{Binding City.Image}"></Entry>
+
+            <Button BackgroundColor="#019ffc" TextColor="#fff" Text="Editar" CornerRadius="4" Command="{Binding CreateCityCommand}"></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

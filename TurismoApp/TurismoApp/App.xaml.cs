@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TurismoApp.Views;
 
 namespace TurismoApp
 {
@@ -10,7 +11,8 @@ namespace TurismoApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Views.Home());
+            MainPage = new NavigationPage(new Home());
+            
         }
 
         protected override void OnStart()

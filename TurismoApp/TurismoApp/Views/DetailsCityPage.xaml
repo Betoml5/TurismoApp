@@ -1,28 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:TurismoApp.ViewModels"
              x:Class="TurismoApp.Views.DetailsCityPage">
-    <StackLayout>
 
-      
-    
-        <Frame Padding="0" Margin="14" CornerRadius="10" >
+
+    <ContentPage.BindingContext>
+        <viewmodels:CityViewModel x:Name="cityvm" ></viewmodels:CityViewModel>
+    </ContentPage.BindingContext>
+    <FlexLayout BackgroundColor="#1f252c" Direction="Column" >
+
+
+        <FlexLayout.Resources>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#fff"></Setter>
+            </Style>
+        </FlexLayout.Resources>
+
+
+        <Frame Padding="0" >
             <Image Source="{Binding Image}" Aspect="Fill" HeightRequest="250"/>
         </Frame>
-        <StackLayout Margin="14">
-           
-            <Frame CornerRadius="12" >
+        <StackLayout >
+
+            <Frame Margin="10, -50" HeightRequest="350" BackgroundColor="#3d404a" CornerRadius="20">
                 <StackLayout >
-                    <Label FontAttributes="Bold" TextColor="#000" FontSize="20">Detalles</Label>
-                        <Label Text="{Binding Type}" FontAttributes="Bold" TextColor="#000"></Label>
-                    <FlexLayout JustifyContent="SpaceBetween">
-                        <Button Text="Eliminar" BackgroundColor="#3F72AF" TextColor="#fff" FlexLayout.Basis="48%"></Button>
-                        <Button Text="Editar" BackgroundColor="#3F72AF" TextColor="#fff" FlexLayout.Basis="48%" ></Button>
-
-
+                    <FlexLayout AlignContent="Center" JustifyContent="SpaceAround" >
+                        <Button Text="Agregar a favoritos" FontAttributes="Bold" BackgroundColor="#17e78e" CornerRadius="12" FlexLayout.Basis="80%"></Button>
+                        <Label TextColor="#42a27d" FontAttributes="Bold" FontSize="20" FlexLayout.AlignSelf="Center" Text="{Binding AvgPrice, StringFormat='${0:F0}'}"></Label>
                     </FlexLayout>
                 </StackLayout>
             </Frame>
         </StackLayout>
-    </StackLayout>
+    </FlexLayout>
 </ContentPage>

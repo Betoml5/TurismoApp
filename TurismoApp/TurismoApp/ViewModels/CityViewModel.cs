@@ -22,17 +22,19 @@ namespace TurismoApp.ViewModels
 
         public string Error { get; set; } = "";
 
+        public int index;
+
         //Commands
         public ICommand ChangeViewCommand { get; set; }
         public ICommand CreateCityCommand { get; set; }
-
         public ICommand DetailsCityCommand { get; set; }    
-
         public ICommand DeleteCityCommand { get; set; }
+        public ICommand EditCityCommand { get; set; }
 
         // Pages
         CreateCityPage createCityPage;
         DetailsCityPage detailsCityPage;
+        EditCityPage editCityPage;
 
         public CityViewModel()
         {
@@ -41,6 +43,7 @@ namespace TurismoApp.ViewModels
             CreateCityCommand = new Command(CreateCity);
             DetailsCityCommand = new Command<City>(DetailsCity);
             DeleteCityCommand = new Command<City>(DeleteCity);
+            EditCityCommand = new Command<City>(EditCity);
         }
 
      
@@ -69,13 +72,32 @@ namespace TurismoApp.ViewModels
             Change();
         }
 
+        public void EditCity(City City)
+        {
+            //clonar
+            index = Cities.IndexOf(City);
+
+            this.City = new City
+            {
+                Name = City.Name,
+                Image = City.Image,
+                Type = City.Type,
+               
+            };
+
+            editCityPage = new EditCityPage()
+            {
+                BindingContext = this
+            };
+
+            Application.Current.MainPage.Navigation.PushAsync(editCityPage);
+        }
+
 
 
 
         private void DetailsCity(City City)
         {
-
-
             detailsCityPage = new DetailsCityPage()
             {
                 BindingContext = City
@@ -83,12 +105,14 @@ namespace TurismoApp.ViewModels
             Application.Current.MainPage.Navigation.PushAsync(detailsCityPage);
         }
 
-        private void DeleteCity(City City)
+        public void DeleteCity(City City)
         {
             if (City != null)
             {
                 Cities.Remove(City);
                 Save();
+                Application.Current.MainPage.Navigation.PopToRootAsync();
+
             }
         }
 
