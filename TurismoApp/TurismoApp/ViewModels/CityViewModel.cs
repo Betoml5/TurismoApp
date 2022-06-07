@@ -31,6 +31,8 @@ namespace TurismoApp.ViewModels
         public ICommand DeleteCityCommand { get; set; }
         public ICommand EditCityCommand { get; set; }
 
+        public ICommand SaveChangesCommand { get; set; }
+
         // Pages
         CreateCityPage createCityPage;
         DetailsCityPage detailsCityPage;
@@ -44,6 +46,7 @@ namespace TurismoApp.ViewModels
             DetailsCityCommand = new Command<City>(DetailsCity);
             DeleteCityCommand = new Command<City>(DeleteCity);
             EditCityCommand = new Command<City>(EditCity);
+            SaveChangesCommand = new Command(SaveChanges);
         }
 
      
@@ -74,23 +77,28 @@ namespace TurismoApp.ViewModels
 
         public void EditCity(City City)
         {
-            //clonar
-            index = Cities.IndexOf(City);
-
-            this.City = new City
+            if(City != null)
             {
-                Name = City.Name,
-                Image = City.Image,
-                Type = City.Type,
-               
-            };
+                //clonar
+                index = Cities.IndexOf(City);
 
-            editCityPage = new EditCityPage()
-            {
-                BindingContext = this
-            };
+                this.City = new City
+                {
+                    Name = City.Name,
+                    Image = City.Image,
+                    Type = City.Type,
+                    Description = City.Description,
+                    AvgPrice = City.AvgPrice,
 
-            Application.Current.MainPage.Navigation.PushAsync(editCityPage);
+                };
+
+                editCityPage = new EditCityPage()
+                {
+                    BindingContext = this
+                };
+
+                Application.Current.MainPage.Navigation.PushAsync(editCityPage);
+            }
         }
 
 
@@ -116,6 +124,13 @@ namespace TurismoApp.ViewModels
             }
         }
 
+        private void SaveChanges()
+        {
+            //validar
+            Cities[index] = City; //Reemplaza el original por el clon
+            Save();
+            Application.Current.MainPage.Navigation.PopToRootAsync();
+        }
 
 
         void Save()

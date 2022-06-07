@@ -18,24 +18,27 @@
 
 
         <Frame Padding="0" >
-            <Image Source="{Binding Image}" Aspect="Fill" HeightRequest="250"/>
+            <StackLayout BackgroundColor="#1f252c">
+                <Image Source="{Binding Image}" Aspect="Fill" HeightRequest="250" Opacity="0.8" />
+
+                <Label Text="{Binding Name}" TranslationY="-230" TranslationX="12" FontSize="20" FontAttributes="Bold"   TextColor="#fff"></Label>
+            </StackLayout>
         </Frame>
         <StackLayout >
 
             <Frame Margin="10, -50" HeightRequest="350" BackgroundColor="#3d404a" CornerRadius="20">
-                <StackLayout >
+                <StackLayout>
                     <FlexLayout AlignContent="Center" JustifyContent="SpaceAround" >
                         <Button Text="Agregar a favoritos" FontAttributes="Bold" BackgroundColor="#17e78e" CornerRadius="12" FlexLayout.Basis="80%"></Button>
                         <Label TextColor="#42a27d" FontAttributes="Bold" FontSize="20" FlexLayout.AlignSelf="Center" Text="{Binding AvgPrice, StringFormat='${0:F0}'}"></Label>
                     </FlexLayout>
-                    <FlexLayout Margin="14">
-                        <Label FontAttributes="Bold">Descripcion</Label>
+                    <FlexLayout Margin="14" Direction="Column">
+                        <Label FontAttributes="Bold" Margin="0,10">Descripcion</Label>
                         <Label Text="{Binding Description}"></Label>
                     </FlexLayout>
-                    <FlexLayout Margin="14">
-                        <ImageButton Margin="0,0,10,0" CornerRadius="12" BackgroundColor="#E23E57" Source="https://img.icons8.com/material-outlined/344/filled-trash.png" WidthRequest="50" HeightRequest="50" Padding="10"></ImageButton>
-                        <ImageButton CornerRadius="12" BackgroundColor="#17e78e" Source="https://img.icons8.com/material-outlined/344/edit--v1.png" WidthRequest="50" HeightRequest="50" Padding="10"></ImageButton>
-
+                    <FlexLayout Margin="14" JustifyContent="SpaceBetween">
+                        <ImageButton Command="{Binding DeleteCityCommand}" CommandParameter="{Binding .}" Margin="0,0,10,0" CornerRadius="12" BackgroundColor="#E23E57" Source="https://img.icons8.com/material-outlined/344/filled-trash.png" WidthRequest="50" HeightRequest="50" Padding="10"></ImageButton>
+                        <ImageButton Command="{Binding Source={x:Reference cityvm}, Path=EditCityCommand}" CommandParameter="{Binding . }" CornerRadius="12" BackgroundColor="#17e78e" Source="https://img.icons8.com/material-outlined/344/edit--v1.png" WidthRequest="50" HeightRequest="50" Padding="10"></ImageButton>
                     </FlexLayout>
                 </StackLayout>
             </Frame>
