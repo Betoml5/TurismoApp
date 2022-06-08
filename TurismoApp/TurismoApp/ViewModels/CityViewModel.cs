@@ -108,8 +108,9 @@ namespace TurismoApp.ViewModels
         {
             detailsCityPage = new DetailsCityPage()
             {
-                BindingContext = City
+                BindingContext = this   
             };
+            this.City = City;
             Application.Current.MainPage.Navigation.PushAsync(detailsCityPage);
         }
 

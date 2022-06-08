@@ -28,7 +28,7 @@
                 <Label>Precio promedio</Label>
                 <Entry Placeholder="$1500" Text="{Binding City.AvgPrice}"></Entry>
 
-                <Label>Descripcion</Label>
+                <Label>Descripción</Label>
                 <Entry Placeholder="Ubicado en la rivera maya" Text="{Binding City.Description}" ></Entry>
 
 

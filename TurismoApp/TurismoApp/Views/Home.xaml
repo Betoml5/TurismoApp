@@ -7,11 +7,11 @@
         <viewmodels:CityViewModel x:Name="cityvm" ></viewmodels:CityViewModel>
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem   Command="{Binding ChangeViewCommand}" CommandParameter="create" IconImageSource="https://i.postimg.cc/hGDBN76X/add-1.png"  ></ToolbarItem>
+        <ToolbarItem   Command="{Binding ChangeViewCommand}" CommandParameter="create" IconImageSource="plus"  ></ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <ScrollView BackgroundColor="#1f252c">
-        <FlexLayout VerticalOptions="Start" AlignContent="Start" Direction="Row" Wrap="Wrap" BindableLayout.ItemsSource="{Binding Cities}">
+        <FlexLayout VerticalOptions="Start" AlignContent="Start" Direction="Row" Wrap="Wrap" BindableLayout.ItemsSource="{Binding Cities}" >
             <FlexLayout.Resources>
                 <Style TargetType="Label">
                     <Setter Property="TextColor" Value="#fff"></Setter>
@@ -44,7 +44,7 @@
                                     </StackLayout>
 
                                     <!--Aqui va un trigger-->
-                                    <ImageButton Source="https://img.icons8.com/ios/2x/hearts.png" BackgroundColor="Transparent">
+                                    <ImageButton Source="heart.png" BackgroundColor="Transparent" WidthRequest="20">
 
                                     </ImageButton>
                                 </FlexLayout>
