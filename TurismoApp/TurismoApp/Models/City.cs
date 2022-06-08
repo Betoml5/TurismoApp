@@ -8,7 +8,7 @@ namespace TurismoApp.Models
     {
 
         public string Name { get; set; }
-        public bool isFav { get; set; }
+        public bool isFav { get; set; } = false;
 
         public string Type { get; set; }
 

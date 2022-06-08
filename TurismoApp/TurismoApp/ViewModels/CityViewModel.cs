@@ -18,6 +18,7 @@ namespace TurismoApp.ViewModels
 
 
         public ObservableCollection<City> Cities { get; set; } = new ObservableCollection<City>();
+        
         public City City { get; set; }
 
         public string Error { get; set; } = "";
@@ -31,6 +32,7 @@ namespace TurismoApp.ViewModels
         public ICommand DeleteCityCommand { get; set; }
         public ICommand EditCityCommand { get; set; }
 
+        public ICommand MakeFavoriteCommand { get; set; }
         public ICommand SaveChangesCommand { get; set; }
 
         // Pages
@@ -46,6 +48,7 @@ namespace TurismoApp.ViewModels
             DetailsCityCommand = new Command<City>(DetailsCity);
             DeleteCityCommand = new Command<City>(DeleteCity);
             EditCityCommand = new Command<City>(EditCity);
+            MakeFavoriteCommand = new Command<City>(MakeFavorite);
             SaveChangesCommand = new Command(SaveChanges);
         }
 
@@ -130,6 +133,22 @@ namespace TurismoApp.ViewModels
             //validar
             Cities[index] = City; //Reemplaza el original por el clon
             Save();
+            Application.Current.MainPage.Navigation.PopToRootAsync();
+        }
+
+        public void MakeFavorite(City City)
+        {
+            if (City.isFav)
+            {
+                City.isFav = false;
+            }
+            else
+            {
+                City.isFav = true;
+            }
+
+            Save();
+            Change();
             Application.Current.MainPage.Navigation.PopToRootAsync();
         }
 

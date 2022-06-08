@@ -38,14 +38,26 @@
                             </Frame>
                             <Frame Margin="10,-50" Padding="10" CornerRadius="9" BackgroundColor="#505764" >
                                 <FlexLayout JustifyContent="SpaceBetween"  AlignItems="Center" >
+                                    
                                     <StackLayout >
                                         <Label FontAttributes="Bold" Text="{Binding Name}"></Label>
                                         <Label Text="{Binding Type}"></Label>
                                     </StackLayout>
-
+                                   
                                     <!--Aqui va un trigger-->
-                                    <ImageButton Source="heart.png" BackgroundColor="Transparent" WidthRequest="20">
-
+                                    <ImageButton   WidthRequest="20">
+                                        <ImageButton.Resources>
+                                            <Style TargetType="ImageButton">
+                                                <Style.Triggers>
+                                                    <DataTrigger TargetType="ImageButton" Binding="{Binding isFav}" Value="true">
+                                                        <Setter Property="Source" Value="like.png"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="ImageButton" Binding="{Binding isFav}" Value="false">
+                                                        <Setter Property="Source" Value="heart.png"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ImageButton.Resources>
                                     </ImageButton>
                                 </FlexLayout>
                             </Frame>

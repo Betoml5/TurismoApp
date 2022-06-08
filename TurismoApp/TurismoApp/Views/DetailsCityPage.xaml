@@ -27,7 +27,20 @@
             <Frame Margin="10, -50" HeightRequest="550" BackgroundColor="#3d404a" CornerRadius="20">
                 <StackLayout >
                     <FlexLayout AlignContent="Center" JustifyContent="SpaceBetween" >
-                        <Button Text="Agregar a favoritos" FontAttributes="Bold" BackgroundColor="#17e78e" CornerRadius="12" FlexLayout.Basis="70%"></Button>
+                        <FlexLayout.Resources>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Button" Binding="{Binding City.isFav}" Value="false">
+                                        <Setter Property="Text" Value="Agregar a favoritos"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Button" Binding="{Binding City.isFav}" Value="true">
+                                        <Setter Property="Text" Value="Eliminar de favoritos"></Setter>
+                                        <Setter Property="BackgroundColor" Value="#E23E57"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </FlexLayout.Resources>
+                        <Button Text="Agregar a favoritos" FontAttributes="Bold" BackgroundColor="#17e78e" CornerRadius="12" FlexLayout.Basis="70%" Command="{Binding MakeFavoriteCommand}" CommandParameter="{Binding City}"></Button>
                         <Label  TextColor="#42a27d" FontAttributes="Bold" FontSize="18" FlexLayout.AlignSelf="Center" Text="{Binding City.AvgPrice, StringFormat='${0:F0}'}"></Label>
                     </FlexLayout>
                     <FlexLayout Margin="14" Direction="Column">
