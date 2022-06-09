@@ -1,14 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace TurismoApp.Models
 {
-    public class City
+    public class City : INotifyPropertyChanged
     {
 
         public string Name { get; set; }
-        public bool isFav { get; set; } = false;
+        private bool isFavorite;
+
+        public bool isFav
+        {
+            get { return isFavorite; }
+            set {
+                isFavorite = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
+
+            }
+        }
+
 
         public string Type { get; set; }
 
@@ -17,5 +29,7 @@ namespace TurismoApp.Models
         public double AvgPrice { get; set; }
 
         public string Description { get; set; } = "";
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

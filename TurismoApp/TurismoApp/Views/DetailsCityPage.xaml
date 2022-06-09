@@ -19,7 +19,10 @@
             <StackLayout BackgroundColor="#1f252c">
                 <Image Source="{Binding City.Image}" Aspect="Fill" HeightRequest="250" Opacity="0.8" />
 
-                <Label Text="{Binding City.Name}" TranslationY="-230" TranslationX="12" FontSize="20" FontAttributes="Bold"   TextColor="#fff"></Label>
+             
+                    <Label Text="{Binding City.Name}" TranslationY="-230" TranslationX="12" FontSize="20" FontAttributes="Bold"   TextColor="#fff"  ></Label>
+
+          
             </StackLayout>
         </Frame>
         <StackLayout >
@@ -36,6 +39,7 @@
                                     <DataTrigger TargetType="Button" Binding="{Binding City.isFav}" Value="true">
                                         <Setter Property="Text" Value="Eliminar de favoritos"></Setter>
                                         <Setter Property="BackgroundColor" Value="#E23E57"></Setter>
+                                        <Setter Property="TextColor" Value="#fff"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
