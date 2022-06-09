@@ -58,12 +58,14 @@ namespace TurismoApp.ViewModels
         {
             if (view == "create")
             {
+                Error = "";
                 City = new City();
                 createCityPage = new CreateCityPage() { BindingContext = this };
                 Application.Current.MainPage.Navigation.PushAsync(createCityPage);
             } 
             else if (view == "home")
             {
+                Error = "";
                 Application.Current.MainPage.Navigation.PopToRootAsync();
             }
 
@@ -73,28 +75,31 @@ namespace TurismoApp.ViewModels
         private void CreateCity()
         {
 
+            Error = "";
+
             if (string.IsNullOrWhiteSpace(City.Name))
             {
-                Error = "Escribe un nombre de ciudad valido";
+                ShowErrorMessage("Escribe un nombre de ciudad valido");
             }
 
             if (string.IsNullOrWhiteSpace(City.Type))
             {
-                Error = "Ingresa un tipo de ciudad valdio";
+                ShowErrorMessage("Ingresa un tipo de ciudad valido");
             }
 
             if (string.IsNullOrWhiteSpace(City.Description))
             {
-                Error = "Ingresa un descripción";
+                ShowErrorMessage("Ingresa un descripción");
             }
 
             if (City.AvgPrice == 0)
             {
-                Error = "Ingresa un numero valido";
+                ShowErrorMessage("Ingresa un numero valido");
             }
+
             if (!Uri.TryCreate(City.Image, UriKind.Absolute, out var uri))
             {
-                Error = "Ingresa una url valida";
+                ShowErrorMessage("Ingresa una url valida");
             }
 
             if (Error == "")
@@ -139,11 +144,14 @@ namespace TurismoApp.ViewModels
 
         private void DetailsCity(City City)
         {
+
+           
             detailsCityPage = new DetailsCityPage()
             {
                 BindingContext = this   
             };
             this.City = City;
+            Change();
             Application.Current.MainPage.Navigation.PushAsync(detailsCityPage);
         }
 
@@ -162,28 +170,30 @@ namespace TurismoApp.ViewModels
         {
             //validar
 
+            Error = "";
+
             if (string.IsNullOrWhiteSpace(City.Name))
             {
-                Error = "Escribe un nombre de ciudad valido";
+                ShowErrorMessage("Escribe un nombre de ciudad valido");
             }
 
             if (string.IsNullOrWhiteSpace(City.Type))
             {
-                Error = "Ingresa un tipo de ciudad valdio";
+                ShowErrorMessage("Ingresa un tipo de ciudad valido");
             }
 
             if (string.IsNullOrWhiteSpace(City.Description))
             {
-                Error = "Ingresa un descripción";
+                ShowErrorMessage("Ingresa un descripción");
             }
 
             if (City.AvgPrice == 0)
             {
-                Error = "Ingresa un numero valido";
+                ShowErrorMessage("Ingresa un numero valido");
             }
             if (!Uri.TryCreate(City.Image, UriKind.Absolute, out var uri))
             {
-                Error = "Ingresa una url valida";
+                ShowErrorMessage("Ingresa una url valida");
             }
 
             if (Error == "")
@@ -208,6 +218,12 @@ namespace TurismoApp.ViewModels
             Save();
             Change();
             Application.Current.MainPage.Navigation.PopToRootAsync();
+        }
+
+        void ShowErrorMessage(string ErrorMsg)
+        {
+            this.Error += ErrorMsg + "\n";
+            Change();
         }
 
 

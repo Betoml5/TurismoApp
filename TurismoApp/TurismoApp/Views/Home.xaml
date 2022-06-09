@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:TurismoApp.ViewModels" 
              x:Class="TurismoApp.Views.Home" 
-             BackgroundColor="#fff">
+             BackgroundColor="#fff"
+             Title="Ciudades">
     <ContentPage.BindingContext>
         <viewmodels:CityViewModel x:Name="cityvm" ></viewmodels:CityViewModel>
     </ContentPage.BindingContext>
@@ -20,9 +21,11 @@
                 </Style>
             </FlexLayout.Resources>
             <BindableLayout.ItemTemplate>
-                <DataTemplate>
-
+            
+            <DataTemplate>
+                  
                     <Frame Padding="0" BackgroundColor="Transparent" WidthRequest="205" VerticalOptions="Center" HeightRequest="200" FlexLayout.Basis="50%">
+                       
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                 Command="{Binding Source={x:Reference cityvm},
@@ -34,7 +37,6 @@
                         <StackLayout Margin="12">
                             <Frame CornerRadius="8" Padding="0" IsClippedToBounds="True" >
                                 <Image WidthRequest="300" HeightRequest="150" Aspect="Fill" Source="{Binding Image}"></Image>
-
                             </Frame>
                             <Frame Margin="10,-50" Padding="10" CornerRadius="9" BackgroundColor="#505764" >
                                 <FlexLayout JustifyContent="SpaceBetween"  AlignItems="Center" >

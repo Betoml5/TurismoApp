@@ -30,32 +30,39 @@
             <Frame Margin="10, -50" HeightRequest="550" BackgroundColor="#3d404a" CornerRadius="20">
                 <StackLayout >
                     <FlexLayout AlignContent="Center" JustifyContent="SpaceBetween" >
-                        <FlexLayout.Resources>
-                            <Style TargetType="Button">
-                                <Style.Triggers>
-                                    <DataTrigger TargetType="Button" Binding="{Binding City.isFav}" Value="false">
-                                        <Setter Property="Text" Value="Agregar a favoritos"></Setter>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Button" Binding="{Binding City.isFav}" Value="true">
-                                        <Setter Property="Text" Value="Eliminar de favoritos"></Setter>
-                                        <Setter Property="BackgroundColor" Value="#E23E57"></Setter>
-                                        <Setter Property="TextColor" Value="#fff"></Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </FlexLayout.Resources>
-                        <Button Text="Agregar a favoritos" FontAttributes="Bold" BackgroundColor="#17e78e" CornerRadius="12" FlexLayout.Basis="70%" Command="{Binding ToggleFavoriteCommand}" CommandParameter="{Binding City}"></Button>
+                       
+                        <Button Text="Agregar a favoritos"
+                                FontAttributes="Bold"
+                                BackgroundColor="#17e78e"
+                                CornerRadius="12"
+                                FlexLayout.Basis="70%"
+                                Command="{Binding ToggleFavoriteCommand}"
+                                CommandParameter="{Binding City}">
+                            <Button.Resources>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <DataTrigger TargetType="Button" Binding="{Binding City.isFav}" Value="false">
+                                            <Setter Property="Text" Value="Agregar a favoritos"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Button" Binding="{Binding City.isFav}" Value="true">
+                                            <Setter Property="Text" Value="Eliminar de favoritos"></Setter>
+                                            <Setter Property="BackgroundColor" Value="#E23E57"></Setter>
+                                            <Setter Property="TextColor" Value="#fff"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                         <Label  TextColor="#42a27d" FontAttributes="Bold" FontSize="18" FlexLayout.AlignSelf="Center" Text="{Binding City.AvgPrice, StringFormat='${0:F0}'}"></Label>
                     </FlexLayout>
                     <FlexLayout Margin="14" Direction="Column">
                         <Label FontAttributes="Bold" Margin="0,10">Descripción</Label>
-
                         <Label Text="{Binding City.Description}" LineBreakMode="TailTruncation" MaxLines="12"></Label>
-                    
+        
                     </FlexLayout>
-                    <FlexLayout Margin="14" JustifyContent="SpaceBetween">
-                        <ImageButton Command="{Binding DeleteCityCommand}" CommandParameter="{Binding City}" Margin="0,0,10,0" CornerRadius="12" BackgroundColor="#E23E57" Source="delete.png" WidthRequest="50" HeightRequest="50" Padding="10"></ImageButton>
-                        <ImageButton Command="{Binding EditCityCommand}" CommandParameter="{Binding City}" CornerRadius="12" BackgroundColor="#17e78e" Source="edit.png" WidthRequest="50" HeightRequest="50" Padding="10"></ImageButton>
+                    <FlexLayout Margin="14" JustifyContent="SpaceBetween"   >
+                        <ImageButton Command="{Binding DeleteCityCommand}" CommandParameter="{Binding City}" Margin="0,0,10,0" CornerRadius="12" BackgroundColor="#E23E57" Source="delete.png" WidthRequest="50" HeightRequest="50" Padding="10" ></ImageButton>
+                        <ImageButton Command="{Binding EditCityCommand}" CommandParameter="{Binding City}" CornerRadius="12" BackgroundColor="#17e78e" Source="edit.png" WidthRequest="50" HeightRequest="50" Padding="10"  ></ImageButton>
                     </FlexLayout>
                 </StackLayout>
             </Frame>
