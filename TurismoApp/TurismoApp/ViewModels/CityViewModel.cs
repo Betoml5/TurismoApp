@@ -32,7 +32,7 @@ namespace TurismoApp.ViewModels
         public ICommand DeleteCityCommand { get; set; }
         public ICommand EditCityCommand { get; set; }
 
-        public ICommand MakeFavoriteCommand { get; set; }
+        public ICommand ToggleFavoriteCommand { get; set; }
         public ICommand SaveChangesCommand { get; set; }
 
         // Pages
@@ -48,7 +48,7 @@ namespace TurismoApp.ViewModels
             DetailsCityCommand = new Command<City>(DetailsCity);
             DeleteCityCommand = new Command<City>(DeleteCity);
             EditCityCommand = new Command<City>(EditCity);
-            MakeFavoriteCommand = new Command<City>(MakeFavorite);
+            ToggleFavoriteCommand = new Command<City>(ToggleFavorite);
             SaveChangesCommand = new Command(SaveChanges);
         }
 
@@ -136,7 +136,7 @@ namespace TurismoApp.ViewModels
             Application.Current.MainPage.Navigation.PopToRootAsync();
         }
 
-        public void MakeFavorite(City City)
+        public void ToggleFavorite(City City)
         {
             if (City.isFav)
             {
