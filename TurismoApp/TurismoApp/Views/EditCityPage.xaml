@@ -30,8 +30,6 @@
             <Label>Descripcion</Label>
             <Entry Placeholder="Ubicado en la rivera maya" Text="{Binding City.Description}" ></Entry>
 
-
-
             <Button BackgroundColor="#17e78e" FontAttributes="Bold" TextColor="#000" Text="Editar" CornerRadius="4" Command="{Binding SaveChangesCommand}"></Button>
         </StackLayout>
     </StackLayout>

@@ -72,10 +72,40 @@ namespace TurismoApp.ViewModels
 
         private void CreateCity()
         {
-            Cities.Add(City);
-            Save();
-            ChangeView("home");
-            Change();
+
+            if (string.IsNullOrWhiteSpace(City.Name))
+            {
+                Error = "Escribe un nombre de ciudad valido";
+            }
+
+            if (string.IsNullOrWhiteSpace(City.Type))
+            {
+                Error = "Ingresa un tipo de ciudad valdio";
+            }
+
+            if (string.IsNullOrWhiteSpace(City.Description))
+            {
+                Error = "Ingresa un descripción";
+            }
+
+            if (City.AvgPrice == 0)
+            {
+                Error = "Ingresa un numero valido";
+            }
+            if (!Uri.TryCreate(City.Image, UriKind.Absolute, out var uri))
+            {
+                Error = "Ingresa una url valida";
+            }
+
+            if (Error == "")
+            {
+                Cities.Add(City);
+                Save();
+                ChangeView("home");
+                Change();
+
+            }
+
         }
 
         public void EditCity(City City)
@@ -131,9 +161,37 @@ namespace TurismoApp.ViewModels
         private void SaveChanges()
         {
             //validar
-            Cities[index] = City; //Reemplaza el original por el clon
-            Save();
-            Application.Current.MainPage.Navigation.PopToRootAsync();
+
+            if (string.IsNullOrWhiteSpace(City.Name))
+            {
+                Error = "Escribe un nombre de ciudad valido";
+            }
+
+            if (string.IsNullOrWhiteSpace(City.Type))
+            {
+                Error = "Ingresa un tipo de ciudad valdio";
+            }
+
+            if (string.IsNullOrWhiteSpace(City.Description))
+            {
+                Error = "Ingresa un descripción";
+            }
+
+            if (City.AvgPrice == 0)
+            {
+                Error = "Ingresa un numero valido";
+            }
+            if (!Uri.TryCreate(City.Image, UriKind.Absolute, out var uri))
+            {
+                Error = "Ingresa una url valida";
+            }
+
+            if (Error == "")
+            {
+                Cities[index] = City; //Reemplaza el original por el clon
+                Save();
+                Application.Current.MainPage.Navigation.PopToRootAsync();
+            }
         }
 
         public void ToggleFavorite(City City)

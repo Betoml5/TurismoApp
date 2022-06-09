@@ -49,8 +49,8 @@
                     </FlexLayout>
                     <FlexLayout Margin="14" Direction="Column">
                         <Label FontAttributes="Bold" Margin="0,10">Descripción</Label>
-                      
-                            <Label Text="{Binding City.Description}" LineBreakMode="TailTruncation" MaxLines="12"></Label>
+
+                        <Label Text="{Binding City.Description}" LineBreakMode="TailTruncation" MaxLines="12"></Label>
                     
                     </FlexLayout>
                     <FlexLayout Margin="14" JustifyContent="SpaceBetween">
