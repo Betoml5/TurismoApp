@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TurismoApp.Views.EditCityPage">
     <StackLayout Background="#1f252c">
-        <Image Margin="0,10" Source="https://img.icons8.com/office/344/worldwide-location--v1.png"></Image>
         <StackLayout Margin="20">
             <StackLayout.Resources>
                 <Style TargetType="Label">
@@ -29,6 +28,7 @@
 
             <Label>Descripcion</Label>
             <Entry Placeholder="Ubicado en la rivera maya" Text="{Binding City.Description}" ></Entry>
+            <Label Text="{Binding Error}" TextColor="#E23E57"></Label>
 
             <Button BackgroundColor="#17e78e" FontAttributes="Bold" TextColor="#000" Text="Editar" CornerRadius="4" Command="{Binding SaveChangesCommand}"></Button>
         </StackLayout>
